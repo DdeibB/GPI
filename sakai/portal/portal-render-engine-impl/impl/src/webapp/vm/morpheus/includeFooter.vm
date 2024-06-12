@@ -1,0 +1,33 @@
+#if (!$pagepopup)
+    <footer class="portal-footer p-2 d-flex flex-column flex-xxl-row justify-content-between align-items-center mt-auto pt-3 border-top">
+        <ul class="nav">
+          #foreach ( $footerLink in $footerLinks )
+              <li class="nav-item">
+                  <a class="nav-link" href="${footerLink.href}" target="$!{footerLink.target}">${footerLink.text}</a>
+              </li>
+          #end
+          <li class="nav-item">
+              <button id="server-info"
+                      class="btn nav-link"
+                      title="${rloader.footer_serverinfo_title}"
+                      data-bs-container="footer"
+                      data-bs-toggle="popover"
+                      data-bs-placement="top"
+                      data-bs-html="true" 
+                      data-bs-content='#parse("/vm/morpheus/snippets/serverInfoPopover-snippet.vm")'
+                      data-bs-template='${popoverTemplate}'
+              >
+                  <i class="bi bi-info-circle"></i>
+              </button>
+          </li>
+        </ul>
+        <div class="nav">
+            <span>${bottomNavCopyright}</span>
+        </div>
+        <div id="tutorial" class="Mrphs-tutorial Mrphs-modal"></div>
+    </footer>
+#else 
+
+    <!-- dont compact -->
+
+#end
